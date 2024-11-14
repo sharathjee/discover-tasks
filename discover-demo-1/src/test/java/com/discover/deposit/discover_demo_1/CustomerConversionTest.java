@@ -24,4 +24,21 @@ public class CustomerConversionTest {
         assertThat(customerDto.getPincode()).isEqualTo("500070");
         assertThat(customerDto.getEmailId()).isEqualTo("abc@xyz.com");
     }
+
+    @Test
+    public void shouldTransformCustomerDtoToCustomer(){
+
+        CustomerDto customerDto = new CustomerDto();
+        customerDto.setId(10L);
+        customerDto.setPincode("500070");
+        customerDto.setName("testName");
+        customerDto.setEmailId("abc@xyz.com");
+
+        Customer customer = CustomerMapper.INSTANCE.CustomerDtoToCustomer(customerDto);
+        assertThat(customer).isNotNull();
+        assertThat(customer.getId()).isEqualTo(10L);
+        assertThat(customer.getZip()).isEqualTo(500070);
+        assertThat(customer.getName()).isEqualTo("testName");
+        assertThat(customer.getEmailId()).isEqualTo("abc@xyz.com");
+    }
 }
