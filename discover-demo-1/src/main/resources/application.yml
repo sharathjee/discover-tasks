@@ -1,0 +1,16 @@
+spring:
+  application:
+      name: discover-demo-1
+server:
+    port: 9091
+endpoints:
+  health:
+    enabled: true
+management:
+    endpoint:
+      health:
+        show-details: always
+    endpoints:
+      web:
+        exposure:
+          include: "*"
